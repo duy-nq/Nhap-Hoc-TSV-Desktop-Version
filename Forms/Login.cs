@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Newtonsoft.Json.Linq;
 using Nhap_Hoc_TSV.Forms;
 using System;
 using System.Collections.Generic;
@@ -60,15 +61,19 @@ namespace Nhap_Hoc_TSV
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            string apiUrl = "https://your-api-url.com/login"; // Replace with your API endpoint
+            string apiUrl = "http://localhost:5001/api/Login"; // Replace with your API endpoint
 
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
             var client = new HttpClient();
 
             // Prepare the content to be sent in the request body (assuming it's JSON)
-            var content = new StringContent($"{{\"username\": \"{username}\", \"password\": \"{password}\"}}", System.Text.Encoding.UTF8, "application/json");
+            var content = new StringContent(
+                $"{{\"soCCCD\": \"{username}\", \"matKhau\": \"{password}\"}}", 
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
 
             try
             {
@@ -79,8 +84,20 @@ namespace Nhap_Hoc_TSV
                 {
                     // Read response content
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    // Process the response or handle success
-                    Console.WriteLine("Login successful");
+                    var json = JObject.Parse(responseContent);
+
+                    if (json["success"].ToString() == "False")
+                    {
+                        XtraMessageBox.Show("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Save user ID and token
+                    Program.id = username;
+                    Program.token = json["data"].ToString();
+
+                    Console.WriteLine("ID: " + Program.id);
+                    Console.WriteLine("Token: " + Program.token);
 
                     // Open main form
                     Main main = new Main();
@@ -93,6 +110,7 @@ namespace Nhap_Hoc_TSV
                 {
                     // Handle error or unsuccessful login
                     Console.WriteLine("Login failed. Status code: " + response.StatusCode);
+                    XtraMessageBox.Show("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (HttpRequestException err)

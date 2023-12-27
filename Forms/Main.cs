@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Nhap_Hoc_TSV.Forms
 {
@@ -10,9 +12,90 @@ namespace Nhap_Hoc_TSV.Forms
     {
         private int[] values = { 0, 0, 0, 0, 0 };
 
+        public class DongPhuc
+        {
+            public string maDongPhuc { get; set; }
+            public string tenDongPhuc { get; set; }
+            public double donGia { get; set; }
+        }
+
         public Main()
         {
             InitializeComponent();
+
+            FormClosing += new FormClosingEventHandler(Main_FormClosing);
+
+            Fee_Load();
+            IsPaid();
+
+            if (values[3] == 0) CnD_Load();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // ask user if they want to the application
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private async void CnD_Load()
+        {
+            string api = "http://localhost:5001/api/DongPhuc/danhsachdongphuc";
+            var client = new System.Net.Http.HttpClient();
+
+            var response = await client.GetAsync(api);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            List<DongPhuc> dongPhucs = JsonConvert.DeserializeObject<List<DongPhuc>>(responseContent);
+
+            for (int i = 0; i < dongPhucs.Count; i++)
+            {
+                Program.arr_cnd[i] = (int)dongPhucs[i].donGia;
+            }
+        }
+
+        private async void IsPaid()
+        {
+            string api = "http://localhost:5001/api/HocPhi/getlink/" + Program.id;
+            var client = new System.Net.Http.HttpClient();
+
+            var response = await client.GetAsync(api);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (responseContent == "Sinh viên đã thanh toán học phí online!")
+            {
+                values[3] = values[4] = 1;
+            }
+        }
+
+        private async void Fee_Load()
+        {
+            // API CALL
+            string api = "http://localhost:5001/api/HocPhi/chitiethp/" + Program.id;
+            var client = new System.Net.Http.HttpClient();
+
+            var response = await client.GetAsync(api);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var data = Newtonsoft.Json.Linq.JObject.Parse(responseContent);
+
+            Program.arr[0] = int.Parse(data["hocPhi"].ToString());
+            Program.arr[1] = int.Parse(data["kinhPhiNhapHoc"].ToString());
+            Program.arr[2] = int.Parse(data["phiBHYT"].ToString());
+            Program.arr[3] = int.Parse(data["phiBHTN"].ToString());
+            Program.arr[4] = int.Parse(data["phiKTX"].ToString());
+            Program.arr[5] = int.Parse(data["phiDongPhuc"].ToString());
+            Program.arr[6] = int.Parse(data["phiCLC"].ToString());
+            Program.arr[7] = Program.arr[0] + Program.arr[1] + Program.arr[2] + Program.arr[3] + Program.arr[4] + Program.arr[5] + Program.arr[6];
         }
         public async Task<string> MakeRequest()
         {
@@ -125,7 +208,7 @@ namespace Nhap_Hoc_TSV.Forms
 
         private void panelControl3_Click(object sender, EventArgs e)
         {
-            Info info = new Forms.Info();
+            InfoUpdate info = new Forms.InfoUpdate();
             openForm(info);
 
             values[0] = 1;
@@ -149,6 +232,12 @@ namespace Nhap_Hoc_TSV.Forms
 
         private void panelControl6_Click(object sender, EventArgs e)
         {
+            if (values[3] == 1)
+            {
+                MessageBox.Show("Đã thanh toán học phí online, không thể tiến hành mua đồng phục!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             CnD cnd = new Forms.CnD();
             openForm(cnd);
 
@@ -157,9 +246,15 @@ namespace Nhap_Hoc_TSV.Forms
 
         private void panelControl7_Click(object sender, EventArgs e)
         {
+            if (values[4] == 1)
+            {
+                MessageBox.Show("Đã thanh toán học phí!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             if (values[3] == 0)
             {
-                MessageBox.Show("Bạn chưa hoàn thành bước 4 để tiến hành thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bắt buộc phải thực hiện bước 4 để tiến hành thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             
@@ -175,9 +270,7 @@ namespace Nhap_Hoc_TSV.Forms
             {
                 if (values[i] == 0)
                 {
-                    // i to string
                     string s = (i+1).ToString();
-                    // message box inform that step i is not completed
                     MessageBox.Show("Bạn chưa hoàn thành bước " + s, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

@@ -107,6 +107,7 @@
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.AutoHeight = false;
             this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(325, 37);
             this.txtPassword.TabIndex = 7;
             this.txtPassword.MouseHover += new System.EventHandler(this.txtPassword_MouseHover);

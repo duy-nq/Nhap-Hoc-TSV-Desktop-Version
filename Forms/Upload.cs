@@ -16,6 +16,17 @@ namespace Nhap_Hoc_TSV
         public Upload()
         {
             InitializeComponent();
+            FormClosing += new FormClosingEventHandler(Upload_FormClosing);
+        }
+
+        private void Upload_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // ask user if they want to exit
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void labelControl1_Click(object sender, EventArgs e)
@@ -58,10 +69,10 @@ namespace Nhap_Hoc_TSV
             return false;
         }
 
-        private bool PostLink(string code)
+        private bool PostLink(string code, string title)
         {
             // open LinkForm
-            Link linkForm = new Link(code);
+            Link linkForm = new Link(code, title);
             linkForm.ShowDialog();
 
             return true;
@@ -103,57 +114,57 @@ namespace Nhap_Hoc_TSV
 
         private void uploadBtn01_Click(object sender, EventArgs e)
         {
-            PostLink("1");
+            PostLink("1", "1. Học bạ THPT (*)");
         }
 
         private void uploadBtn02_Click(object sender, EventArgs e)
         {
-            PostLink("2");
+            PostLink("2", "2. Giấy xác nhận tốt nghiệp THPT tạm thời (*)");
         }
 
         private void uploadBtn03_Click(object sender, EventArgs e)
         {
-            PostLink("3");
+            PostLink("3", "3. Giấy khai sinh (*)");
         }
 
         private void uploadBtn04_Click(object sender, EventArgs e)
         {
-            PostLink("4");
+            PostLink("4", "4. Đối tượng ưu tiên");
         }
 
         private void uploadBtn05_Click(object sender, EventArgs e)
         {
-            PostLink("5");
+            PostLink("5", "5. Giấy báo trúng tuyển (*)");
         }
 
         private void uploadBtn06_Click(object sender, EventArgs e)
         {
-            PostLink("6");
+            PostLink("6", "6. Giấy chứng nhận");
         }
 
         private void uploadBtn07_Click(object sender, EventArgs e)
         {
-            PostLink("7");
+            PostLink("7", "7. Hồ sơ sinh viên (*)");
         }
 
         private void uploadBtn08_Click(object sender, EventArgs e)
         {
-            PostLink("8");
+            PostLink("8", "8. Giấy chuyển sinh hoạt Đoàn (Đảng)");
         }
 
         private void uploadBtn09_Click(object sender, EventArgs e)
         {
-            PostLink("9");
+            PostLink("9", "9. Giấy chuyển NVQS (với nam giới)");
         }
 
         private void uploadBtn10_Click(object sender, EventArgs e)
         {
-            PostLink("10");
+            PostLink("10", "10. Thẻ BHYT (*)");
         }
 
         private void uploadBtn11_Click(object sender, EventArgs e)
         {
-            PostLink("11");
+            PostLink("11", "11. Chứng chỉ Anh Văn hoặc QPAN");
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

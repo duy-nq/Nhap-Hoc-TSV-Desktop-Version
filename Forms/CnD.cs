@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Nhap_Hoc_TSV.Forms;
+using System.Net.Http;
 
 namespace Nhap_Hoc_TSV.Forms
 {
@@ -23,8 +24,10 @@ namespace Nhap_Hoc_TSV.Forms
             dt.Columns.Add("Tên", typeof(string));
             dt.Columns.Add("Đơn giá", typeof(int));
             
-            dt.Rows.Add("Áo sơ mi", "130000");
-            dt.Rows.Add("Đồng phục thể dục", "200000");
+            dt.Rows.Add("Áo sơ mi", Program.arr_cnd[1]);
+            dt.Rows.Add("Áo thể dục", Program.arr_cnd[2]);
+            dt.Rows.Add("Quần thể dục", Program.arr_cnd[3]);
+            dt.Rows.Add("Áo khoác", Program.arr_cnd[0]);
 
             gridControl1.DataSource = dt;
         }
@@ -63,25 +66,6 @@ namespace Nhap_Hoc_TSV.Forms
             checkEdit2.Enabled = false;
         }
 
-        private void checkEdit3_CheckedChanged(object sender, EventArgs e)
-        {
-            checkEdit4.Checked = !checkEdit3.Checked;
-            cltBtn1.Enabled = cltBtn2.Enabled = false;
-
-            checkEdit4.Enabled = true;
-            checkEdit3.Enabled = false;
-        }
-
-        private void checkEdit4_CheckedChanged(object sender, EventArgs e)
-        {
-            checkEdit3.Checked = !checkEdit4.Checked;
-            cltBtn1.Enabled = cltBtn2.Enabled = true;
-            cltBtn1.Value = cltBtn2.Value = 1;
-
-            checkEdit3.Enabled = true;
-            checkEdit4.Enabled = false;
-        }
-
         private void sizeBtn_Click(object sender, EventArgs e)
         {
             string imagePath = "C:/Users/HP/Desktop/MyWork/banner-template.png";
@@ -89,9 +73,43 @@ namespace Nhap_Hoc_TSV.Forms
             addOnInfo(imagePath, description);
         }
 
+        private async void saveCnD(string cid, string size, int quantity)
+        {
+            string apiUrl = "http://localhost:5001/api/DongPhuc/muadongphuc/" + Program.id;
+
+            var client = new HttpClient();
+
+            var content = new StringContent(
+                $"{{\"soCCCD\": \"{Program.id}\", \"maDongPhuc\": \"{cid}\", \"kichCo\": \"{size}\", \"soLuong\": \"{quantity}\"}}",
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+
+            Console.WriteLine(content);
+
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thao tác thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch
+            {
+                XtraMessageBox.Show("Lỗi kết nối!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (comboBox1.Text == "" || comboBox2.Text == "" || comboBox4.Text == "" || comboBox5.Text == "")
             {
                 MessageBox.Show("Vui lòng chọn size đồng phục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -104,8 +122,21 @@ namespace Nhap_Hoc_TSV.Forms
                 return;
             }
 
-            // Send data to database via API
+            saveCnD("dp001", comboBox1.Text, (int)cltBtn1.Value);
+            
+            if ((int)cltBtn2.Value > 0) saveCnD("dp004", comboBox1.Text, (int)cltBtn2.Value);
+            
+            saveCnD("dp002", comboBox2.Text, (int)cltBtn3.Value);
+            
+            if ((int)cltBtn4.Value > 0) saveCnD("dp003", comboBox4.Text, (int)cltBtn4.Value);
+
+
             MessageBox.Show("Đã lưu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void labelControl3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
