@@ -200,12 +200,6 @@
             this.txtCongViecR2.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtCongViecR2.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtCongViecR2.Properties.AutoHeight = false;
-            this.txtCongViecR2.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtCongViecR2.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtCongViecR2.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtCongViecR2.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtCongViecR2.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtCongViecR2.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtCongViecR2.Size = new System.Drawing.Size(219, 35);
             this.txtCongViecR2.TabIndex = 26;
             // 
@@ -242,12 +236,6 @@
             this.txtNamSinhR2.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtNamSinhR2.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtNamSinhR2.Properties.AutoHeight = false;
-            this.txtNamSinhR2.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtNamSinhR2.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtNamSinhR2.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtNamSinhR2.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtNamSinhR2.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtNamSinhR2.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtNamSinhR2.Size = new System.Drawing.Size(131, 35);
             this.txtNamSinhR2.TabIndex = 23;
             // 
@@ -298,12 +286,6 @@
             this.txtQuocTichR2.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtQuocTichR2.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtQuocTichR2.Properties.AutoHeight = false;
-            this.txtQuocTichR2.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtQuocTichR2.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtQuocTichR2.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtQuocTichR2.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtQuocTichR2.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtQuocTichR2.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtQuocTichR2.Size = new System.Drawing.Size(219, 35);
             this.txtQuocTichR2.TabIndex = 19;
             // 
@@ -438,12 +420,6 @@
             this.txtCongViecR1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtCongViecR1.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtCongViecR1.Properties.AutoHeight = false;
-            this.txtCongViecR1.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtCongViecR1.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtCongViecR1.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtCongViecR1.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtCongViecR1.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtCongViecR1.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtCongViecR1.Size = new System.Drawing.Size(219, 35);
             this.txtCongViecR1.TabIndex = 26;
             // 
@@ -480,12 +456,6 @@
             this.txtNamSinhR1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtNamSinhR1.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtNamSinhR1.Properties.AutoHeight = false;
-            this.txtNamSinhR1.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtNamSinhR1.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtNamSinhR1.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtNamSinhR1.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtNamSinhR1.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtNamSinhR1.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtNamSinhR1.Size = new System.Drawing.Size(131, 35);
             this.txtNamSinhR1.TabIndex = 23;
             // 
@@ -536,12 +506,6 @@
             this.txtQuocTichR1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Gainsboro;
             this.txtQuocTichR1.Properties.AppearanceFocused.Options.UseBackColor = true;
             this.txtQuocTichR1.Properties.AutoHeight = false;
-            this.txtQuocTichR1.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtQuocTichR1.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtQuocTichR1.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
-            this.txtQuocTichR1.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtQuocTichR1.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.txtQuocTichR1.Properties.MaskSettings.Set("allowBlankInput", false);
             this.txtQuocTichR1.Size = new System.Drawing.Size(219, 35);
             this.txtQuocTichR1.TabIndex = 19;
             // 

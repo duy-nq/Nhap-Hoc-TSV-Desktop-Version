@@ -95,9 +95,6 @@
             this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.ForeColor = System.Drawing.Color.RoyalBlue;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Thông thường - 250000 / 5 tháng",
-            "Dịch vụ - 500000 / 5 tháng"});
             this.comboBox3.Location = new System.Drawing.Point(12, 99);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(484, 39);

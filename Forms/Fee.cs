@@ -11,9 +11,10 @@ namespace Nhap_Hoc_TSV.Forms
         
         public Fee()
         {
+            Program.Fee_Load();
+
             InitializeComponent();
-            
-            // Add fake data to grid view
+
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("STT", typeof(int));
             dataTable.Columns.Add("Khoản thu", typeof(string));
@@ -87,6 +88,7 @@ namespace Nhap_Hoc_TSV.Forms
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             XtraMessageBox.Show("Thanh toán tại phòng ... từ ngày 21/08 đến 21/09", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Program.offline = true;
             Close();
         }
     }

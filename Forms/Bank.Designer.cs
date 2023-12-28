@@ -41,16 +41,16 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.txtCCCD = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -58,12 +58,12 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCCD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureEdit1
@@ -97,6 +97,7 @@
             // panelControl2
             // 
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl2.Controls.Add(this.txtPhone);
             this.panelControl2.Controls.Add(this.checkEdit2);
             this.panelControl2.Controls.Add(this.addressBtn);
             this.panelControl2.Controls.Add(this.checkEdit1);
@@ -105,14 +106,13 @@
             this.panelControl2.Controls.Add(this.labelControl9);
             this.panelControl2.Controls.Add(this.labelControl8);
             this.panelControl2.Controls.Add(this.labelControl6);
-            this.panelControl2.Controls.Add(this.comboBoxEdit1);
-            this.panelControl2.Controls.Add(this.textEdit3);
+            this.panelControl2.Controls.Add(this.txtAddress);
             this.panelControl2.Controls.Add(this.labelControl5);
             this.panelControl2.Controls.Add(this.dateEdit1);
             this.panelControl2.Controls.Add(this.labelControl4);
-            this.panelControl2.Controls.Add(this.textEdit2);
+            this.panelControl2.Controls.Add(this.txtCCCD);
             this.panelControl2.Controls.Add(this.labelControl2);
-            this.panelControl2.Controls.Add(this.textEdit1);
+            this.panelControl2.Controls.Add(this.txtName);
             this.panelControl2.Controls.Add(this.labelControl1);
             this.panelControl2.Location = new System.Drawing.Point(12, 12);
             this.panelControl2.Name = "panelControl2";
@@ -210,35 +210,21 @@
             this.labelControl6.Appearance.Options.UseForeColor = true;
             this.labelControl6.Location = new System.Drawing.Point(294, 337);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(80, 31);
+            this.labelControl6.Size = new System.Drawing.Size(136, 31);
             this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "Nơi cấp";
+            this.labelControl6.Text = "Số điện thoại";
             // 
-            // comboBoxEdit1
+            // txtAddress
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(294, 374);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.AutoHeight = false;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(308, 34);
-            this.comboBoxEdit1.TabIndex = 10;
-            // 
-            // textEdit3
-            // 
-            this.textEdit3.Location = new System.Drawing.Point(5, 482);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit3.Properties.Appearance.Options.UseBackColor = true;
-            this.textEdit3.Properties.Appearance.Options.UseFont = true;
-            this.textEdit3.Properties.AutoHeight = false;
-            this.textEdit3.Size = new System.Drawing.Size(597, 34);
-            this.textEdit3.TabIndex = 9;
+            this.txtAddress.Location = new System.Drawing.Point(5, 482);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAddress.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Properties.Appearance.Options.UseBackColor = true;
+            this.txtAddress.Properties.Appearance.Options.UseFont = true;
+            this.txtAddress.Properties.AutoHeight = false;
+            this.txtAddress.Size = new System.Drawing.Size(597, 34);
+            this.txtAddress.TabIndex = 9;
             // 
             // labelControl5
             // 
@@ -281,17 +267,17 @@
             this.labelControl4.TabIndex = 6;
             this.labelControl4.Text = "Ngày cấp";
             // 
-            // textEdit2
+            // txtCCCD
             // 
-            this.textEdit2.Location = new System.Drawing.Point(5, 297);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit2.Properties.Appearance.Options.UseBackColor = true;
-            this.textEdit2.Properties.Appearance.Options.UseFont = true;
-            this.textEdit2.Properties.AutoHeight = false;
-            this.textEdit2.Size = new System.Drawing.Size(597, 34);
-            this.textEdit2.TabIndex = 5;
+            this.txtCCCD.Location = new System.Drawing.Point(5, 297);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCCCD.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCCD.Properties.Appearance.Options.UseBackColor = true;
+            this.txtCCCD.Properties.Appearance.Options.UseFont = true;
+            this.txtCCCD.Properties.AutoHeight = false;
+            this.txtCCCD.Size = new System.Drawing.Size(597, 34);
+            this.txtCCCD.TabIndex = 5;
             // 
             // labelControl2
             // 
@@ -305,22 +291,22 @@
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "CCCD hoặc Hộ chiếu";
             // 
-            // textEdit1
+            // txtName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(5, 190);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Properties.AutoHeight = false;
-            this.textEdit1.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.textEdit1.Properties.MaskSettings.Set("mask", "([A-Z]+ ?){1,6}");
-            this.textEdit1.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.textEdit1.Properties.MaskSettings.Set("showPlaceholders", false);
-            this.textEdit1.Properties.MaskSettings.Set("allowBlankInput", false);
-            this.textEdit1.Size = new System.Drawing.Size(597, 34);
-            this.textEdit1.TabIndex = 3;
+            this.txtName.Location = new System.Drawing.Point(5, 190);
+            this.txtName.Name = "txtName";
+            this.txtName.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Properties.Appearance.Options.UseBackColor = true;
+            this.txtName.Properties.Appearance.Options.UseFont = true;
+            this.txtName.Properties.AutoHeight = false;
+            this.txtName.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtName.Properties.MaskSettings.Set("mask", "([A-Z]+ ?){1,6}");
+            this.txtName.Properties.MaskSettings.Set("isAutoComplete", false);
+            this.txtName.Properties.MaskSettings.Set("showPlaceholders", false);
+            this.txtName.Properties.MaskSettings.Set("allowBlankInput", false);
+            this.txtName.Size = new System.Drawing.Size(597, 34);
+            this.txtName.TabIndex = 3;
             // 
             // labelControl1
             // 
@@ -343,6 +329,21 @@
             this.simpleButton1.Size = new System.Drawing.Size(117, 41);
             this.simpleButton1.TabIndex = 17;
             this.simpleButton1.Text = "Xác nhận";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(294, 374);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPhone.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Properties.Appearance.Options.UseBackColor = true;
+            this.txtPhone.Properties.Appearance.Options.UseFont = true;
+            this.txtPhone.Properties.AutoHeight = false;
+            this.txtPhone.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtPhone.Properties.MaskSettings.Set("mask", "(0)[0-9]{9}");
+            this.txtPhone.Size = new System.Drawing.Size(308, 34);
+            this.txtPhone.TabIndex = 20;
             // 
             // Bank
             // 
@@ -364,12 +365,12 @@
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCCD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -381,15 +382,14 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit txtName;
+        private DevExpress.XtraEditors.TextEdit txtCCCD;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit txtAddress;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton addressBtn;
         private DevExpress.XtraEditors.SimpleButton idBtn;
@@ -398,5 +398,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
+        private DevExpress.XtraEditors.TextEdit txtPhone;
     }
 }

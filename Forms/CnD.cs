@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 using Nhap_Hoc_TSV.Forms;
 using System.Net.Http;
+using Newtonsoft.Json;
+using static Nhap_Hoc_TSV.Forms.Main;
 
 namespace Nhap_Hoc_TSV.Forms
 {
@@ -30,6 +32,26 @@ namespace Nhap_Hoc_TSV.Forms
             dt.Rows.Add("Áo khoác", Program.arr_cnd[0]);
 
             gridControl1.DataSource = dt;
+
+            KTX_Load();
+        }
+
+        private async void KTX_Load()
+        {
+            string api = "http://localhost:5001/api/KTX/danhsachktx";
+            var client = new System.Net.Http.HttpClient();
+
+            var response = await client.GetAsync(api);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            List<KTX> KTXes = JsonConvert.DeserializeObject<List<KTX>>(responseContent);
+
+            foreach (KTX ktx in KTXes)
+            {
+                string content = ktx.tenPhong + " - " + ktx.donGia;
+                comboBox3.Items.Add(content);
+            }
         }
 
         private void addOnInfo(string path, string des)
@@ -85,8 +107,6 @@ namespace Nhap_Hoc_TSV.Forms
                 "application/json"
             );
 
-            Console.WriteLine(content);
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync(apiUrl, content);
@@ -107,6 +127,39 @@ namespace Nhap_Hoc_TSV.Forms
 
         }
 
+        private async void saveKTX()
+        {
+            string apiUrl = "http://localhost:5001/api/KTX/dangky/" + Program.id;
+
+            var client = new HttpClient();
+
+            var idPhong = comboBox3.Text == "Dãy phòng dịch vụ - 480000" ? "DV" : "TC";
+
+            var content = new StringContent(
+                               $"{{\"soCCCD\": \"{Program.id}\", \"maPhong\": \"{idPhong}\", \"ghiChu\": \"{""}\"}}",
+                                              System.Text.Encoding.UTF8,
+                                                             "application/json"
+                                                                        );
+
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thao tác KTX thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch
+            {
+                XtraMessageBox.Show("Lỗi kết nối KTX!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (comboBox1.Text == "" || comboBox2.Text == "" || comboBox4.Text == "" || comboBox5.Text == "")
@@ -122,14 +175,15 @@ namespace Nhap_Hoc_TSV.Forms
                 return;
             }
 
+            saveKTX();
+
             saveCnD("dp001", comboBox1.Text, (int)cltBtn1.Value);
             
-            if ((int)cltBtn2.Value > 0) saveCnD("dp004", comboBox1.Text, (int)cltBtn2.Value);
+            saveCnD("dp004", comboBox5.Text, (int)cltBtn2.Value);
             
             saveCnD("dp002", comboBox2.Text, (int)cltBtn3.Value);
             
-            if ((int)cltBtn4.Value > 0) saveCnD("dp003", comboBox4.Text, (int)cltBtn4.Value);
-
+            saveCnD("dp003", comboBox4.Text, (int)cltBtn4.Value);
 
             MessageBox.Show("Đã lưu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
