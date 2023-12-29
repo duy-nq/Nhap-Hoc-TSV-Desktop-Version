@@ -185,6 +185,8 @@ namespace Nhap_Hoc_TSV.Forms
             
             saveCnD("dp003", comboBox4.Text, (int)cltBtn4.Value);
 
+            values[3] = 1;
+
             MessageBox.Show("Đã lưu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

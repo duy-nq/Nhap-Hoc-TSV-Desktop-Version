@@ -26,6 +26,8 @@ namespace Nhap_Hoc_TSV.Forms
             public string gioiTinh { get; set; }
             public string ngaySinh { get; set; }
             public string thuongTru { get; set; }
+            public string tamTru { get; set; }
+
             public string sdt { get; set; }
             public string email { get; set; }
             public string avatarPath { get; set; }
@@ -47,7 +49,7 @@ namespace Nhap_Hoc_TSV.Forms
                 nguoiThan2 = new Relative();
             }
 
-            public Person(string soCCCD, string hoTen, string quocTich, string gioiTinh, string ngaySinh, string thuongTru, string sdt, string email, string avatarPath, Relative nguoiThan1, Relative nguoiThan2)
+            public Person(string soCCCD, string hoTen, string quocTich, string gioiTinh, string ngaySinh, string thuongTru, string tamTru, string sdt, string email, string avatarPath, Relative nguoiThan1, Relative nguoiThan2)
             {
                 this.soCCCD = soCCCD;
                 this.hoTen = hoTen;
@@ -55,6 +57,7 @@ namespace Nhap_Hoc_TSV.Forms
                 this.gioiTinh = gioiTinh;
                 this.ngaySinh = ngaySinh;
                 this.thuongTru = thuongTru;
+                this.tamTru = tamTru;
                 this.sdt = sdt;
                 this.email = email;
                 this.avatarPath = avatarPath;
@@ -121,6 +124,31 @@ namespace Nhap_Hoc_TSV.Forms
 
             txtPhone.Text = data["sdt"].ToString();
             txtAddress.Text = data["thuongTru"].ToString();
+            txtTmp.Text = data["tamTru"].ToString();
+
+            try
+            {
+                txtHoTenR1.Text = data["nguoiThan1"]["hoTen"].ToString();
+                txtNamSinhR1.Text = data["nguoiThan1"]["namSinh"].ToString();
+                txtQuocTichR1.Text = data["nguoiThan1"]["quocTich"].ToString();
+                txtDanTocR1.Text = data["nguoiThan1"]["danToc"].ToString();
+                txtCongViecR1.Text = data["nguoiThan1"]["ngheNghiep"].ToString();
+                txtPhoneR1.Text = data["nguoiThan1"]["sdt"].ToString();
+                txtAddressR1.Text = data["nguoiThan1"]["diaChi"].ToString();
+
+                txtHoTenR2.Text = data["nguoiThan2"]["hoTen"].ToString();
+                txtNamSinhR2.Text = data["nguoiThan2"]["namSinh"].ToString();
+                txtQuocTichR2.Text = data["nguoiThan2"]["quocTich"].ToString();
+                txtDanTocR2.Text = data["nguoiThan2"]["danToc"].ToString();
+                txtCongViecR2.Text = data["nguoiThan2"]["ngheNghiep"].ToString();
+                txtPhoneR2.Text = data["nguoiThan2"]["sdt"].ToString();
+                txtAddressR2.Text = data["nguoiThan2"]["diaChi"].ToString();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
@@ -147,6 +175,8 @@ namespace Nhap_Hoc_TSV.Forms
             if (txtCongViecR1.Text == "" || txtCongViecR2.Text == "" || txtPhoneR1.Text == "" || txtPhoneR2.Text == "") return false;   
 
             if (txtAddressR1.Text == "" || txtAddressR2.Text == "") return false;
+
+            if (checkEdit1.Checked == true && txtTmp.Text == "") return false;
 
             return true;
         } 
@@ -180,6 +210,7 @@ namespace Nhap_Hoc_TSV.Forms
                 txtGender.Text.Normalize(),
                 Program.formatDate(txtDate.Text),
                 txtAddress.Text.Normalize(),
+                txtTmp.Text.Normalize(),
                 txtPhone.Text.Normalize(),
                 "",
                 "",
@@ -200,17 +231,15 @@ namespace Nhap_Hoc_TSV.Forms
 
             var client = new HttpClient();
 
-            Console.WriteLine(json);
+            Program.address = txtAddress.Text;
 
             try
             {
                 HttpResponseMessage response = await client.PutAsync(apiUrl, data);
                 Console.WriteLine(response);
                 response.EnsureSuccessStatusCode();
-                
+
                 MessageBox.Show("Cập nhật thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-                Program.address = txtAddress.Text;
             }
             catch
             {

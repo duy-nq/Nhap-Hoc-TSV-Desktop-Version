@@ -10,7 +10,7 @@ namespace Nhap_Hoc_TSV.Forms
 {
     public partial class Main : DevExpress.XtraEditors.XtraForm
     {
-        public int[] values = { 0, 0, 0, 0, 0 };
+        public static int[] values = { 0, 0, 0, 0, 0 };
 
         public class DongPhuc
         {
@@ -30,17 +30,39 @@ namespace Nhap_Hoc_TSV.Forms
             public string dichVuDiKem { get; set; }
         }
 
+        private async Task Fee_Load()
+        {
+            // API CALL
+            string api = "http://localhost:5001/api/HocPhi/chitiethp/" + Program.id;
+            var client = new System.Net.Http.HttpClient();
+
+            var response = await client.GetAsync(api);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var data = Newtonsoft.Json.Linq.JObject.Parse(responseContent);
+
+            Console.WriteLine(data);
+
+            Program.arr[0] = int.Parse(data["hocPhi"].ToString());
+            Program.arr[1] = int.Parse(data["kinhPhiNhapHoc"].ToString());
+            Program.arr[2] = int.Parse(data["phiBHYT"].ToString());
+            Program.arr[3] = int.Parse(data["phiBHTN"].ToString());
+            Program.arr[4] = int.Parse(data["phiKTX"].ToString());
+            Program.arr[5] = int.Parse(data["phiDongPhuc"].ToString());
+            Program.arr[6] = int.Parse(data["phiCLC"].ToString());
+            Program.arr[7] = Program.arr[0] + Program.arr[1] + Program.arr[2] + Program.arr[3] + Program.arr[4] + Program.arr[5] + Program.arr[6];
+        
+            if (Program.arr[5] != 0) values[3] = 1;
+        }
+
         public Main()
         {
             InitializeComponent();
 
             FormClosing += new FormClosingEventHandler(Main_FormClosing);
 
-            Program.Fee_Load();
+            _ = Fee_Load();
             IsPaid();
-
-            if (Program.arr[5] != 0) values[3] = 1;
-            if (values[4] == 0) CnD_Load();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -87,6 +109,8 @@ namespace Nhap_Hoc_TSV.Forms
             {
                 values[3] = values[4] = 1;
             }
+
+            if (values[4] == 0) CnD_Load();
         }
 
         private void labelControl26_MouseEnter(object sender, EventArgs e)
@@ -225,17 +249,9 @@ namespace Nhap_Hoc_TSV.Forms
 
             CnD cnd = new Forms.CnD();
             openForm(cnd);
-
-            Program.Fee_Load();
-            if (Program.arr[5] == 0)
-            {
-                MessageBox.Show("Hoàn tất bước này trước khi thực hiện thanh toán!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else values[3] = 1;
         }
 
-        private void panelControl7_Click(object sender, EventArgs e)
+        private async void panelControl7_Click(object sender, EventArgs e)
         {
             if (values[4] == 1 && Program.offline == false)
             {
@@ -249,14 +265,10 @@ namespace Nhap_Hoc_TSV.Forms
                 return;
             }
 
+            await Fee_Load();
+            
             Fee fee = new Forms.Fee();
             openForm(fee);
-
-            IsPaid();
-            if (Program.offline == true)
-            {
-                values[4] = 1;
-            }
         }
 
         private void panelControl8_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static Nhap_Hoc_TSV.Forms.Main;
 
 namespace Nhap_Hoc_TSV.Forms
 {
@@ -11,8 +12,6 @@ namespace Nhap_Hoc_TSV.Forms
         
         public Fee()
         {
-            Program.Fee_Load();
-
             InitializeComponent();
 
             DataTable dataTable = new DataTable();
@@ -47,9 +46,10 @@ namespace Nhap_Hoc_TSV.Forms
             }
             else
             {
-                XtraMessageBox.Show("Đang tiến hành thanh toán...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 System.Diagnostics.Process.Start(responseContent);
             }
+
+            values[4] = 1;
         }
 
         private async void CheckBill()
@@ -63,13 +63,13 @@ namespace Nhap_Hoc_TSV.Forms
 
             try
             {
+                isPaid = true;
+
                 var data = Newtonsoft.Json.Linq.JObject.Parse(responseContent);
 
                 string message = "Mã hóa đơn: " + data["maHD"].ToString() + " - Số tiền: " + data["soTien"].ToString() + " - Thời gian: " + data["thoiDiem"].ToString() + " - Nội dung thanh toán: " + data["noiDung"].ToString();
 
                 XtraMessageBox.Show(message, "Xác nhận đã thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                isPaid = true;
             }
             catch
             {
