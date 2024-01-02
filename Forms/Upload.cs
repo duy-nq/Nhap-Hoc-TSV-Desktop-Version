@@ -80,7 +80,7 @@ namespace Nhap_Hoc_TSV
 
         private void labelControl7_Click(object sender, EventArgs e)
         {
-            string imagePath = "C:/Users/HP/Desktop/MyWork/banner-template.png";
+            string imagePath = "C:/Users/HP/Pictures/Screenshots/File .png";
             string description = "Danh sách đối tượng ưu tiên";
             addOnInfo(imagePath, description);
         }
@@ -97,7 +97,7 @@ namespace Nhap_Hoc_TSV
 
         private void labelControl18_Click(object sender, EventArgs e)
         {
-            string imagePath = "C:/Users/HP/Desktop/MyWork/banner-template.png";
+            string imagePath = "C:/Users/HP/Pictures/Screenshots/Eng Cer.png";
             string description = "Danh sách chứng chỉ";
             addOnInfo(imagePath, description);
         }

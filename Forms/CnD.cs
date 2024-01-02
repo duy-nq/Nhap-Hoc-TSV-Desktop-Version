@@ -90,7 +90,7 @@ namespace Nhap_Hoc_TSV.Forms
 
         private void sizeBtn_Click(object sender, EventArgs e)
         {
-            string imagePath = "C:/Users/HP/Desktop/MyWork/banner-template.png";
+            string imagePath = "C:/Users/HP/Downloads/Documents/20160202140038_63575.jpg";
             string description = "Bảng tra cứu size đồng phục";
             addOnInfo(imagePath, description);
         }

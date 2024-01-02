@@ -122,6 +122,8 @@ namespace Nhap_Hoc_TSV.Forms
             txtDate.Text = data["ngaySinh"].ToString();
             txtGender.Text = data["gioiTinh"].ToString();
 
+            txtUID.Text = Program.id;
+
             txtPhone.Text = data["sdt"].ToString();
             txtAddress.Text = data["thuongTru"].ToString();
             txtTmp.Text = data["tamTru"].ToString();

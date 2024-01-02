@@ -162,7 +162,7 @@
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(634, 45);
             this.labelControl20.TabIndex = 21;
-            this.labelControl20.Text = "THÔNG TIN NGƯỜI THÂN 2 (TÙY CHỌN)";
+            this.labelControl20.Text = "THÔNG TIN NGƯỜI THÂN 2 (*)";
             // 
             // panelControl5
             // 
@@ -736,6 +736,7 @@
             this.txtMajor2.Size = new System.Drawing.Size(518, 54);
             this.txtMajor2.TabIndex = 2;
             this.txtMajor2.Text = "ĐA PHƯƠNG TIỆN";
+            this.txtMajor2.Visible = false;
             // 
             // txtMajor1
             // 
@@ -751,6 +752,7 @@
             this.txtMajor1.Size = new System.Drawing.Size(518, 54);
             this.txtMajor1.TabIndex = 1;
             this.txtMajor1.Text = "CÔNG NGHỆ";
+            this.txtMajor1.Visible = false;
             // 
             // labelControl7
             // 
@@ -763,6 +765,7 @@
             this.labelControl7.Size = new System.Drawing.Size(300, 62);
             this.labelControl7.TabIndex = 0;
             this.labelControl7.Text = "NGÀNH HỌC";
+            this.labelControl7.Visible = false;
             // 
             // panelControl1
             // 

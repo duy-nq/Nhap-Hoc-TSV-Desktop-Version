@@ -106,6 +106,7 @@
             this.labelControl26.Size = new System.Drawing.Size(94, 17);
             this.labelControl26.TabIndex = 5;
             this.labelControl26.Text = "VỀ TRANG CHỦ";
+            this.labelControl26.Visible = false;
             this.labelControl26.MouseEnter += new System.EventHandler(this.labelControl26_MouseEnter);
             // 
             // panelControl2
